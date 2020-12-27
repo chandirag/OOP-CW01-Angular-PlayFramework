@@ -1,3 +1,5 @@
+.
+
 .container {
   margin-top: 40px;
   padding-bottom: 40px;
@@ -5,68 +7,16 @@
 
 table{
   width: 100%;
+  border: 2px solid black;
 }
 
-/*.mat-column {*/
-/*  word-wrap: break-word !important;*/
-/*  white-space: unset !important;*/
-/*  overflow-wrap: break-word;*/
-/*  word-wrap: break-word;*/
+.sort-button {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 20px 5px;
+}
 
-/*  word-break: break-word;*/
-
-/*  -ms-hyphens: auto;*/
-/*  -moz-hyphens: auto;*/
-/*  -webkit-hyphens: auto;*/
-/*  hyphens: auto;*/
-/*}*/
-
-/*.mat-col-pos {*/
-/*  flex: 0 0 5% !important;*/
-/*  width: 5% !important;*/
-/*}*/
-
-/*.mat-col-club-name {*/
-/*  flex: 0 0 25% !important;*/
-/*  width: 25% !important;*/
-/*}*/
-
-/*.mat-col-played {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-wins {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-draws {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-losses {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-gs {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-gr {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-gd {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
-
-/*.mat-col-points {*/
-/*  flex: 0 0 10% !important;*/
-/*  width: 10% !important;*/
-/*}*/
+.heading {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+}

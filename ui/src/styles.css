@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-heading {
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}

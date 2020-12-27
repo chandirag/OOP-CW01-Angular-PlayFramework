@@ -2,27 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from "../app.service";
 import RegisteredFootballClub = RegisteredFootballClubList.RegisteredFootballClub;
 
-// export interface RegisteredFootballClub {
-//   pos: number,
-//   clubName: string,
-//   playedMatches: number,
-//   wins: number,
-//   draws: number,
-//   losses: number,
-//   goalsScored: number,
-//   goalsReceived: number,
-//   goalDifference: number,
-//   points: number
-// }
-//
-// const DATA: RegisteredFootballClub[] = [
-//   {pos: 1, clubName: 'Manchester', playedMatches: 0, wins: 0, draws: 0, losses: 0, goalsScored: 0, goalsReceived: 0, goalDifference: 0, points: 0},
-//   {pos: 2, clubName: 'Barcelona', playedMatches: 0, wins: 0, draws: 0, losses: 0, goalsScored: 0, goalsReceived: 0, goalDifference: 0, points: 0}
-//
-//   // {pos: 1, clubName: 'Manchester'},
-//   // {pos: 2, clubName: 'Barcelona'}
-// ];
-
 declare module RegisteredFootballClubList {
 
   export interface DateFounded {
@@ -59,10 +38,6 @@ export class PremiereLeagueTableComponent implements OnInit {
   clubsList: RegisteredFootballClub[];
   positions: number[];
 
-  // displayedColumns: string[] = ['pos', 'clubName', 'playedMatches', 'wins', 'draws', 'losses', 'goalsScored', 'goalsReceived', 'goalDifference', 'points']
-  // // displayedColumns: string[] = ['pos', 'clubName']
-  // dataSource = DATA;
-
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -88,4 +63,42 @@ export class PremiereLeagueTableComponent implements OnInit {
     return pos;
   }
 
+
+  public sortTableByPointsDescending() {
+    this.clubsList.sort(function(a, b) {
+      return b.clubPoints - a.clubPoints;
+    })
+  }
+
+  public sortTableByPointsAscending() {
+    this.clubsList.sort(function(a, b) {
+      return a.clubPoints - b.clubPoints;
+    })
+  }
+
+
+  public sortTableByGoalsScoredDescending() {
+    this.clubsList.sort(function(a, b) {
+      return b.goalsScored - a.goalsScored;
+    })
+  }
+
+  public sortTableByGoalsScoredAscending() {
+    this.clubsList.sort(function(a, b) {
+      return a.goalsScored - b.goalsScored;
+    })
+  }
+
+
+  public sortTableByWinsDescending() {
+    this.clubsList.sort(function(a, b) {
+      return b.noOfWins - a.noOfWins;
+    })
+  }
+
+  public sortTableByWinsAscending() {
+    this.clubsList.sort(function(a, b) {
+      return a.noOfWins - b.noOfWins;
+    })
+  }
 }
