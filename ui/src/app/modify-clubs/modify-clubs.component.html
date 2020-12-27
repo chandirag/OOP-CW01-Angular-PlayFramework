@@ -1,0 +1,120 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+      <div class="form-label">Add New Club</div>
+    </div>
+
+    <form [formGroup]="addClubForm" id="addNewClubForm">
+      <!-- Club Name -->
+      <div class="form-group row justify-content-center">
+        <mat-form-field class="input-field" appearance="outline">
+          <mat-label>Club Name</mat-label>
+          <input matInput formControlName="clubName">
+          <mat-error *ngIf="clubName.value == ''">Club name is required!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Club Location -->
+      <div class="form-group row justify-content-center">
+        <mat-form-field class="input-field" appearance="outline">
+          <mat-label>Club Location</mat-label>
+          <input matInput formControlName="clubLocation">
+          <mat-error *ngIf="clubLocation.invalid">Club location is required!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Head Coach -->
+      <div class="form-group row justify-content-center">
+        <mat-form-field class="input-field" appearance="outline">
+          <mat-label>Head Coach</mat-label>
+          <input matInput formControlName="headCoach">
+          <mat-error *ngIf="headCoach.invalid">The name of the current head coach is required!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Date Founded -->
+      <div class="form-group row justify-content-center">
+        <div class="row">
+
+          <div class="col-sm-3">
+            <mat-form-field id="dayInput" appearance="outline">
+              <mat-label>DD</mat-label>
+              <input matInput formControlName="dayFounded">
+              <mat-error *ngIf="dayFounded.invalid">Invalid day!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-3">
+            <mat-form-field id="monthInput" appearance="outline">
+              <mat-label>MM</mat-label>
+              <input matInput formControlName="monthFounded">
+              <mat-error *ngIf="monthFounded.invalid">Invalid month!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+            <mat-form-field id="yearInput" appearance="outline">
+              <mat-label>YYYY</mat-label>
+              <input matInput formControlName="yearFounded">
+              <mat-error *ngIf="yearFounded.invalid">Invalid year!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <button (click)="addNewClub()" [disabled]="addClubForm.invalid" class="btn btn-primary btn-dark" id="btnAddClub">Add Club</button>
+      </div>
+    </form>
+
+
+    <div class="row justify-content-center">
+      <div class="form-label">Delete Existing Club</div>
+    </div>
+
+    <form [formGroup]="deleteClubForm" id="deleteClubForm">
+      <!-- Club Name -->
+      <div class="form-group row justify-content-center">
+        <mat-form-field class="input-field" appearance="outline" id="txtExistingClub">
+          <mat-label>Club Name</mat-label>
+          <input matInput formControlName="existingClubName">
+          <mat-error *ngIf="existingClubName.value == ''">Club name is required!</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="form-group row justify-content-center">
+      <button (click)="deleteClub()" [disabled]="deleteClubForm.invalid" class="btn btn-primary btn-dark" id="btnDeleteClub">Delete Club</button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

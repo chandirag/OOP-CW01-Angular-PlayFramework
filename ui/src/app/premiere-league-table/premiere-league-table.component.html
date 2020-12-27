@@ -1,0 +1,113 @@
+<!-- Angular Material Table -->
+
+<!--<div class="container">-->
+<!--  <div class="row justify-content-center">-->
+<!--    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">-->
+
+<!--      &lt;!&ndash;- Note that these columns can be defined in any order.-->
+<!--            The actual rendered columns are set as a property on the row definition" &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Position Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="pos">-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-pos"> Pos</th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.pos}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="clubName">-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-club-name"> Club Name </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.clubName}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Played Matches &ndash;&gt;-->
+<!--      <ng-container matColumnDef="playedMatches" >-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-played"> Played </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.playedMatches}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Wins &ndash;&gt;-->
+<!--      <ng-container matColumnDef="wins">-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-wins"> Wins </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.wins}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Draws &ndash;&gt;-->
+<!--      <ng-container matColumnDef="draws">-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-draws"> Draws </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.draws}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Losses &ndash;&gt;-->
+<!--      <ng-container matColumnDef="losses" >-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-losses"> Losses </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.losses}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Goals Scored &ndash;&gt;-->
+<!--      <ng-container matColumnDef="goalsScored" class="mat-column mat-col-gs">-->
+<!--        <th mat-header-cell *matHeaderCellDef> GS </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.goalsScored}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Goals Received &ndash;&gt;-->
+<!--      <ng-container matColumnDef="goalsReceived" >-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-gr"> GR </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.goalsReceived}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Goal Difference &ndash;&gt;-->
+<!--      <ng-container matColumnDef="goalDifference" >-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-gd"> GD </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.goalDifference}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Points &ndash;&gt;-->
+<!--      <ng-container matColumnDef="points" >-->
+<!--        <th mat-header-cell *matHeaderCellDef class="mat-column mat-col-points"> Points </th>-->
+<!--        <td mat-cell *matCellDef="let footballClub"> {{footballClub.points}} </td>-->
+<!--      </ng-container>-->
+
+<!--      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- Bootstrap Table -->
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-striped" *ngIf="clubsList">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Club Name</th>
+        <th scope="col">Played</th>
+        <th scope="col">Wins</th>
+        <th scope="col">Draws</th>
+        <th scope="col">Losses</th>
+        <th scope="col">GS</th>
+        <th scope="col">GR</th>
+        <th scope="col">GD</th>
+        <th scope="col">Points</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let club of getClubs();">
+          <td>1</td>
+          <td>{{ club.clubName }}</td>
+          <td>{{ club.noOfMatchesPlayed }}</td>
+          <td>{{ club.noOfWins }}</td>
+          <td>{{ club.noOfDraws }}</td>
+          <td>{{ club.noOfLosses }}</td>
+          <td>{{ club.goalsScored }}</td>
+          <td>{{ club.goalsReceived }}</td>
+          <td>{{ club.goalDifference }}</td>
+          <td>{{ club.clubPoints }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+

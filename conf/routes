@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Serve index page from public directory
+#GET     /                           controllers.FrontendController.index()
+
+# An example route (Prefix all API routes with apiPrefix defined in application.conf)
+GET     /api/summary                controllers.HomeController.appSummary
+
+# Serve static assets under public directory
+#GET     /*file                      controllers.FrontendController.assetOrDefault(file)
+
+# Test post request
+#POST    /api/postTest               controllers.HomeController.postTest()
+
+
+
+
+# Get Current Club Count
+GET    /api/getNumberOfClubs                                                       controllers.FootballClubController.getNumber
+
+# Add new club from user input
+POST   /api/createClub/*clubName/*clubLocation/*headCoach/*day/*month/*year        controllers.FootballClubController.createClub(clubName, clubLocation, headCoach, day, month, year)
+
+# Delete Club from user input
+POST   /api/deleteExistingClub/*existingClubName                                   controllers.FootballClubController.deleteExistingClub(existingClubName)
+
+# Get list of registered clubs
+GET    /api/getClubs                                                               controllers.FootballClubController.getClubs
+
+# Get specific club from registered club list
+#GET    /api/getClubs/:arrayIndex                                                   controllers.FootballClubController.getClubs(arrayIndex: number)
