@@ -18,16 +18,19 @@ GET     /api/summary                controllers.HomeController.appSummary
 
 
 # Get Current Club Count
-GET    /api/getNumberOfClubs                                                       controllers.FootballClubController.getNumber
+GET    /api/getNumberOfClubs                                                            controllers.FootballClubController.getNumber
 
 # Add new club from user input
-POST   /api/createClub/*clubName/*clubLocation/*headCoach/*day/*month/*year        controllers.FootballClubController.createClub(clubName, clubLocation, headCoach, day, month, year)
+POST   /api/createClub/*clubName/*clubLocation/*headCoach/*day/*month/*year             controllers.FootballClubController.createClub(clubName, clubLocation, headCoach, day, month, year)
 
 # Delete Club from user input
-POST   /api/deleteExistingClub/*existingClubName                                   controllers.FootballClubController.deleteExistingClub(existingClubName)
+POST   /api/deleteExistingClub/*existingClubName                                        controllers.FootballClubController.deleteExistingClub(existingClubName)
 
 # Get list of registered clubs
-GET    /api/getClubs                                                               controllers.FootballClubController.getClubs
+GET    /api/getClubs                                                                    controllers.FootballClubController.getClubs
 
 # Get list of played matches
-GET    /api/getMatches                                                             controllers.MatchController.getMatches
+GET    /api/getMatches                                                                  controllers.MatchController.getMatches
+
+# Add new match from user input
+POST    /api/addMatch/*team1Name/*score1/*team2Name/*score2/*dayP/*monthP/*yearP        controllers.MatchController.addMatch(team1Name, score1, team2Name, score2, dayP, monthP, yearP)

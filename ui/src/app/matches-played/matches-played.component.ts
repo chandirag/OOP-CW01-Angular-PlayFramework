@@ -1,70 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import PlayedMatch = PlayedMatchesList.PlayedMatch;
 import {AppService} from "../app.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-
-declare module PlayedMatchesList {
-
-  export interface DatePlayed {
-    year: number;
-    month: number;
-    day: number;
-    isLeapYear: boolean;
-  }
-
-  export interface DateFounded {
-    year: number;
-    month: number;
-    day: number;
-    isLeapYear: boolean;
-  }
-
-  export interface Team1 {
-    clubName: string;
-    clubLocation: string;
-    dateFounded: DateFounded;
-    headCoach: string;
-    noOfMatchesPlayed: number;
-    clubPoints: number;
-    noOfWins: number;
-    noOfLosses: number;
-    noOfDraws: number;
-    goalsReceived: number;
-    goalsScored: number;
-    goalDifference: number;
-  }
-
-  export interface DateFounded2 {
-    year: number;
-    month: number;
-    day: number;
-    isLeapYear: boolean;
-  }
-
-  export interface Team2 {
-    clubName: string;
-    clubLocation: string;
-    dateFounded: DateFounded2;
-    headCoach: string;
-    noOfMatchesPlayed: number;
-    clubPoints: number;
-    noOfWins: number;
-    noOfLosses: number;
-    noOfDraws: number;
-    goalsReceived: number;
-    goalsScored: number;
-    goalDifference: number;
-  }
-
-  export interface PlayedMatch {
-    datePlayed: DatePlayed;
-    team1: Team1;
-    team1Score: number;
-    team2: Team2;
-    team2Score: number;
-  }
-
-}
+import { PlayedMatch } from "../interfaces/played-match";
+import {RegisteredFootballClub} from "../interfaces/registered-football-club";
 
 @Component({
   selector: 'app-matches-played',
@@ -76,11 +14,16 @@ export class MatchesPlayedComponent implements OnInit {
   filterMatchForm: FormGroup;
 
   matchesList: PlayedMatch[];
+  clubsList: RegisteredFootballClub[];
 
 
   constructor(private appService: AppService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.appService.getClubs().subscribe((data: any) => {
+      this.clubsList = data;
+    })
+
     this.appService.getMatches().subscribe((data: any) => {
       this.matchesList = data;
     })
@@ -106,4 +49,30 @@ export class MatchesPlayedComponent implements OnInit {
     return this.matchesList;
   }
 
+  public addMatch(): void {
+    this.appService.addMatch(
+      this.addMatchForm.get('team1Name').value,
+      this.addMatchForm.get('team1Score').value,
+      this.addMatchForm.get('team2Name').value,
+      this.addMatchForm.get('team2Score').value,
+      this.addMatchForm.get('dayPlayed').value,
+      this.addMatchForm.get('monthPlayed').value,
+      this.addMatchForm.get('yearPlayed').value).subscribe((data: any) => {})
+
+    this.appService.getMatches().subscribe((data: any) => {
+      this.matchesList = data;
+    })
+  }
+
+  get dayPlayed() { return this.addMatchForm.get('dayPlayed'); }
+  get monthPlayed() { return this.addMatchForm.get('monthPlayed'); }
+  get yearPlayed() { return this.addMatchForm.get('yearPlayed'); }
+  get team1Name() { return this.addMatchForm.get('team1Name'); }
+  get team1Score() { return this.addMatchForm.get('team1Score'); }
+  get team2Name() { return this.addMatchForm.get('team2Name'); }
+  get team2Score() { return this.addMatchForm.get('team2Score'); }
+
+  public getClubs(): RegisteredFootballClub[] {
+    return this.clubsList;
+  }
 }

@@ -55,11 +55,10 @@ export class ModifyClubsComponent implements OnInit {
   get monthFounded() { return this.addClubForm.get('monthFounded'); }
   get yearFounded() { return this.addClubForm.get('yearFounded'); }
 
+
+
   public deleteClub(): void {
-    console.log(this.deleteClubForm.get('existingClubName').value);
-    this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {
-      console.log('Club deleted' + data);
-    })
+    this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {})
   }
 
   get existingClubName() { return this.deleteClubForm.get('existingClubName'); }

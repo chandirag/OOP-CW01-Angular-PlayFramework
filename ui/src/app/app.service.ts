@@ -19,6 +19,7 @@ export class AppService {
   private deleteClubUrl = '/api/deleteExistingClub';
   private clubsUrl = '/api/getClubs';
   private matchesUrl = '/api/getMatches';
+  private addMatchUrl = '/api/addMatch';
 
   constructor(private http: HttpClient) {
   }
@@ -39,6 +40,10 @@ export class AppService {
     return this.http.post(this.dataPostTestUrl, {});
   }
 
+
+
+
+
   public getNoOfClubs(): Observable<any> {
     return this.http.get(this.noOfClubsUrl, {})
   }
@@ -49,6 +54,10 @@ export class AppService {
 
   public deleteExistingClub(existingClubName): Observable<any> {
     return this.http.post(this.deleteClubUrl + '/' + existingClubName, {})
+  }
+P
+  public addMatch(team1Name, score1, team2Name, score2, dayP, monthP, yearP): Observable<any> {
+    return this.http.post(this.addMatchUrl + '/' + team1Name + '/' + score1 + '/' + team2Name + '/' + score2 + '/' + dayP + '/' + monthP + '/' + yearP, {})
   }
 
 
