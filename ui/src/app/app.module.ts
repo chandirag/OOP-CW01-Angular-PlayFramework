@@ -21,6 +21,9 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatTableModule } from "@angular/material/table";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 const routes: Routes = [
   {
@@ -83,7 +86,10 @@ const routes: Routes = [
     MatSelectModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonToggleModule
   ],
   providers: [
     AppService,

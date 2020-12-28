@@ -29,5 +29,5 @@ POST   /api/deleteExistingClub/*existingClubName                                
 # Get list of registered clubs
 GET    /api/getClubs                                                               controllers.FootballClubController.getClubs
 
-# Get specific club from registered club list
-#GET    /api/getClubs/:arrayIndex                                                   controllers.FootballClubController.getClubs(arrayIndex: number)
+# Get list of played matches
+GET    /api/getMatches                                                             controllers.MatchController.getMatches

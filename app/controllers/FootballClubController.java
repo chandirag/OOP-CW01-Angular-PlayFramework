@@ -59,12 +59,4 @@ public class FootballClubController extends Controller {
         JsonNode jsonNode = Json.toJson(premiereLeagueManager.getClubs());
         return ok(jsonNode).as("application/json");
     }
-
-//    public Result getClubs(int arrayIndex) {
-//        PremiereLeagueManager premiereLeagueManager = new PremiereLeagueManager();
-//        premiereLeagueManager.restorePreviousState("data.ser");
-//
-//        JsonNode jsonNode = Json.toJson(premiereLeagueManager.getClubs().get(arrayIndex));
-//        return ok(jsonNode).as("application/json");
-//    }
 }

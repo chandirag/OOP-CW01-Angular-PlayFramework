@@ -8,13 +8,15 @@
     <div class="heading">Sort table by:</div>
   </div>
 
-  <div class="row justify-content-center btn-group-sm">
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByPointsAscending()">Points (Ascending)</button>
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByPointsDescending()">Points (Descending)</button>
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByGoalsScoredAscending()">Goals Scored (Ascending)</button>
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByGoalsScoredDescending()">Goals Scored (Descending)</button>
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByWinsAscending()">Wins (Ascending)</button>
-    <button class="btn-sm btn-outline-dark sort-button" (click)="sortTableByWinsDescending()">Wins (Descending)</button>
+  <div class="row justify-content-center">
+    <mat-button-toggle-group class="button-group">
+      <mat-button-toggle (click)="sortTableByPointsAscending()">Points (Ascending)</mat-button-toggle>
+      <mat-button-toggle (click)="sortTableByPointsDescending()">Points (Descending)</mat-button-toggle>
+      <mat-button-toggle (click)="sortTableByGoalsScoredAscending()">Goals Scored (Ascending)</mat-button-toggle>
+      <mat-button-toggle (click)="sortTableByGoalsScoredDescending()">Goals Scored (Descending)</mat-button-toggle>
+      <mat-button-toggle (click)="sortTableByWinsAscending()">Wins (Ascending)</mat-button-toggle>
+      <mat-button-toggle  (click)="sortTableByWinsDescending()">Wins (Descending)</mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
 
   <div class="table-responsive">

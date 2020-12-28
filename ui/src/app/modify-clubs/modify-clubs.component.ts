@@ -9,14 +9,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./modify-clubs.component.css']
 })
 export class ModifyClubsComponent implements OnInit {
-  // noOfClubs: any;
-  // clubName: any = "";
-  // clubLocation: any = "";
-  // headCoach: any = "";
-  // dayFounded:  any = "";
-  // monthFounded: any = "";
-  // yearFounded: any = "";
-
   addClubForm: FormGroup;
   deleteClubForm: FormGroup;
 
@@ -44,14 +36,6 @@ export class ModifyClubsComponent implements OnInit {
   //   this.appService.getNoOfClubs().subscribe((data: any) => {
   //     this.noOfClubs = data.content;
   //   })
-  // }
-
-  // public addNewClub():void {
-  //   console.log(this.clubName);
-  //   this.appService.createNewClub(this.clubName, this.clubLocation, this.headCoach, this.day Founded, this.monthFounded, this.yearFounded).subscribe((data: any) => {
-  //     console.log("hello");
-  //   });
-  //   this.clubName = "";
   // }
 
   public addNewClub(): void {

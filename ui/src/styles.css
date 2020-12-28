@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .page-heading {
   font-family: "Poppins", "Helvetica Neue", sans-serif;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
-  margin-top: 20px;
-  padding-bottom: 20px;
 }

@@ -1,0 +1,125 @@
+.container {
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+table{
+  width: 100%;
+  border: 2px solid black;
+}
+
+#dayInput {
+  max-width:70px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: -5px;
+}
+
+#monthInput {
+  max-width:70px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: -5px;
+}
+
+#yearInput {
+  max-width: 160px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: -5px;
+}
+
+.score-input {
+  margin-left: 20px;
+  max-width: 130px;
+}
+
+.form-heading {
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#btnAddRandomMatch {
+  min-width: 350px;
+}
+
+#btnAddMatch {
+  min-width: 350px;
+}
+
+#pageHeading {
+  margin-top: 30px;
+}
+
+.card {
+  min-width: 420px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button-group {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+#dayInputFilter {
+  max-width:70px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#monthInputFilter {
+  max-width:70px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#yearInputFilter {
+  max-width: 160px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#btnSearchTable {
+  min-width: 160px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+}
+
+#btnResetTable {
+  min-width: 160px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+}
+
+#tableCard {
+  min-height: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /*padding-bottom: 30px;*/
+  padding-top: 40px;
+}
+
+.secondary-button {
+  border: 1px solid #292b2c;
+  color: #292b2c;
+}
+
+.secondary-button:hover {
+  border: 1px solid #f0ad4e;
+}

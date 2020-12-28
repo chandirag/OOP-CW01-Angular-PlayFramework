@@ -50,18 +50,18 @@ export class PremiereLeagueTableComponent implements OnInit {
     return this.clubsList;
   }
 
-  public createPosInts() {
-    let clubsArraySize: number = this.clubsList.length;
-    for(let i = 0; i <= clubsArraySize; i++) {
-      this.positions.concat(i);
-    }
-  }
-
-  public getPosInts(): number {
-    let pos: number = this.positions[0];
-    this.positions.shift();
-    return pos;
-  }
+  // public createPosInts() {
+  //   let clubsArraySize: number = this.clubsList.length;
+  //   for(let i = 0; i <= clubsArraySize; i++) {
+  //     this.positions.concat(i);
+  //   }
+  // }
+  //
+  // public getPosInts(): number {
+  //   let pos: number = this.positions[0];
+  //   this.positions.shift();
+  //   return pos;
+  // }
 
 
   public sortTableByPointsDescending() {

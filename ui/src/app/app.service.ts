@@ -18,6 +18,7 @@ export class AppService {
   private createClubUrl = '/api/createClub';
   private deleteClubUrl = '/api/deleteExistingClub';
   private clubsUrl = '/api/getClubs';
+  private matchesUrl = '/api/getMatches';
 
   constructor(private http: HttpClient) {
   }
@@ -57,5 +58,9 @@ export class AppService {
 
   public getClubs(): Observable<any> {
     return this.http.get(this.clubsUrl, {})
+  }
+
+  public getMatches(): Observable<any> {
+    return this.http.get(this.matchesUrl, {})
   }
 }
