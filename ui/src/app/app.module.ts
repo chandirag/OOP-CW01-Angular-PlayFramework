@@ -24,23 +24,10 @@ import { MatTableModule } from "@angular/material/table";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import {InterceptorService} from "./services/httpInterceptor/interceptor.service";
 
 const routes: Routes = [
-  {
-    path: 'java',
-    component: RouteExampleComponent,
-    data: { technology: 'Java' }
-  },
-  {
-    path: 'play',
-    component: RouteExampleComponent,
-    data: { technology: 'Play' }
-  },
-  {
-    path: 'angular',
-    component: RouteExampleComponent,
-    data: { technology: 'Angular' }
-  },
   {
     path: 'clubs',
     component: ModifyClubsComponent,
@@ -55,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/leagueStandings',
     pathMatch: 'full'
   }
 ];
@@ -69,35 +56,37 @@ const routes: Routes = [
     PremiereLeagueTableComponent,
     ModifyClubsComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'Csrf-Token',
-      headerName: 'Csrf-Token',
-    }),
-    RouterModule.forRoot(routes),
-    FormsModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatTableModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatButtonToggleModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        HttpClientXsrfModule.withOptions({
+            cookieName: 'Csrf-Token',
+            headerName: 'Csrf-Token',
+        }),
+        RouterModule.forRoot(routes),
+        FormsModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatTableModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatButtonToggleModule,
+        MatProgressBarModule
+    ],
   providers: [
     AppService,
     {
       multi: true,
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptorService
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

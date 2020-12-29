@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppService} from "../app.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PlayedMatch } from "../interfaces/played-match";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {PlayedMatch} from "../interfaces/played-match";
 import {RegisteredFootballClub} from "../interfaces/registered-football-club";
 
 @Component({
@@ -58,10 +58,22 @@ export class MatchesPlayedComponent implements OnInit {
       this.addMatchForm.get('dayPlayed').value,
       this.addMatchForm.get('monthPlayed').value,
       this.addMatchForm.get('yearPlayed').value).subscribe((data: any) => {})
+  }
 
+  public filterMatches(): PlayedMatch[] {
+    this.matchesList = this.matchesList.filter(match =>
+      match.datePlayed.day == this.filterMatchForm.get('dayPlayed').value &&
+      match.datePlayed.month == this.filterMatchForm.get('monthPlayed').value &&
+      match.datePlayed.year == this.filterMatchForm.get('yearPlayed').value
+    );
+    return this.matchesList;
+  }
+
+  public showAllMatches(): PlayedMatch[] {
     this.appService.getMatches().subscribe((data: any) => {
       this.matchesList = data;
     })
+    return this.matchesList;
   }
 
   get dayPlayed() { return this.addMatchForm.get('dayPlayed'); }
@@ -74,5 +86,38 @@ export class MatchesPlayedComponent implements OnInit {
 
   public getClubs(): RegisteredFootballClub[] {
     return this.clubsList;
+  }
+
+  public addRandomMatch(): void {
+    this.appService.addRandomMatch().subscribe((data:any) => {})
+  }
+
+  public sortTableByDatesAscending() {
+    this.matchesList.sort(function(m1, m2) {
+      let result = m1.datePlayed.year - m2.datePlayed.year;
+      if (result == 0) {
+        result = m1.datePlayed.month - m2.datePlayed.month;
+        if (result == 0) {
+          result = m1.datePlayed.day - m2.datePlayed.day;
+          return result;
+        }
+        return result;
+      }
+      return result;
+    })
+  }
+  public sortTableByDatesDescending() {
+    this.matchesList.sort(function(m1, m2) {
+      let result = m2.datePlayed.year - m1.datePlayed.year;
+      if (result == 0) {
+        result = m2.datePlayed.month - m1.datePlayed.month;
+        if (result == 0) {
+          result = m2.datePlayed.day - m1.datePlayed.day;
+          return result;
+        }
+        return result;
+      }
+      return result;
+    })
   }
 }

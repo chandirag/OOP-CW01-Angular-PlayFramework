@@ -33,4 +33,7 @@ GET    /api/getClubs                                                            
 GET    /api/getMatches                                                                  controllers.MatchController.getMatches
 
 # Add new match from user input
-POST    /api/addMatch/*team1Name/*score1/*team2Name/*score2/*dayP/*monthP/*yearP        controllers.MatchController.addMatch(team1Name, score1, team2Name, score2, dayP, monthP, yearP)
+POST   /api/addMatch/*team1Name/*score1/*team2Name/*score2/*dayP/*monthP/*yearP        controllers.MatchController.addMatch(team1Name, score1, team2Name, score2, dayP, monthP, yearP)
+
+# Add random match
+POST   /api/addRandomMatch                                                              controllers.MatchController.addRandomMatch()

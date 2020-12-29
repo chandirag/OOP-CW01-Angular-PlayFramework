@@ -82,7 +82,7 @@
           </div>
 
           <div class="form-group row justify-content-center">
-            <button class="btn btn btn-outline-warning secondary-button" id="btnAddRandomMatch">Add Random Match</button>
+            <button class="btn btn btn-outline-warning secondary-button" id="btnAddRandomMatch" (click)="addRandomMatch()">Add Random Match</button>
           </div>
 
           <div class="form-group row justify-content-center">
@@ -131,23 +131,20 @@
 
           </div>
           <div class="row justify-content-center">
-            <button class="btn btn-outline-warning secondary-button" id="btnResetTable">Show All Matches</button>
-            <button class="btn btn-dark" id="btnSearchTable">Search Table</button>
+            <button class="btn btn-outline-warning secondary-button" id="btnResetTable" (click)="showAllMatches()">Show All Matches</button>
+            <button class="btn btn-dark" id="btnSearchTable" (click)="filterMatches()">Search Table</button>
           </div>
 
         </form>
       </div>
 
 
-
-
-
       <div class="card" id="tableCard">
         <div class="row justify-content-center">
           <div class="heading">Sort table by:</div>
           <mat-button-toggle-group class="button-group">
-            <mat-button-toggle >Date Played (Ascending)</mat-button-toggle>
-            <mat-button-toggle >Date Played (Descending)</mat-button-toggle>
+            <mat-button-toggle (click)="sortTableByDatesAscending()">Date Played (Ascending)</mat-button-toggle>
+            <mat-button-toggle (click)="sortTableByDatesDescending()">Date Played (Descending)</mat-button-toggle>
           </mat-button-toggle-group>
         </div>
 

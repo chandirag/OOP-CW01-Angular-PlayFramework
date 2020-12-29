@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProgressService} from "../services/progress/progress.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor( public progressService: ProgressService) { }
 
+  ngOnInit(): void {}
 }
