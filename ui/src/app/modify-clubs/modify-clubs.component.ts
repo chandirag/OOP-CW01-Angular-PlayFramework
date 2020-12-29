@@ -27,9 +27,6 @@ export class ModifyClubsComponent implements OnInit {
     this.deleteClubForm = this.formBuilder.group({
       existingClubName: ['', [Validators.required]]
     })
-
-    this.addClubForm.valueChanges.subscribe(console.log);
-    this.deleteClubForm.valueChanges.subscribe(console.log);
   }
 
   // public getNoOfClubs(): void {

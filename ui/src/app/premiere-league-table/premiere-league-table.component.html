@@ -4,37 +4,38 @@
     <div class="page-heading">League Standings</div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="heading">Sort table by:</div>
-  </div>
+  <div class="card">
+    <div class="row justify-content-center">
+      <div class="heading">Sort table by:</div>
+    </div>
 
-  <div class="row justify-content-center">
-    <mat-button-toggle-group class="button-group">
-      <mat-button-toggle (click)="sortTableByPointsAscending()">Points (Ascending)</mat-button-toggle>
-      <mat-button-toggle (click)="sortTableByPointsDescending()">Points (Descending)</mat-button-toggle>
-      <mat-button-toggle (click)="sortTableByGoalsScoredAscending()">Goals Scored (Ascending)</mat-button-toggle>
-      <mat-button-toggle (click)="sortTableByGoalsScoredDescending()">Goals Scored (Descending)</mat-button-toggle>
-      <mat-button-toggle (click)="sortTableByWinsAscending()">Wins (Ascending)</mat-button-toggle>
-      <mat-button-toggle  (click)="sortTableByWinsDescending()">Wins (Descending)</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
+    <div class="row justify-content-center">
+      <mat-button-toggle-group class="button-group">
+        <mat-button-toggle (click)="sortTableByPointsAscending()">Points (Ascending)</mat-button-toggle>
+        <mat-button-toggle (click)="sortTableByPointsDescending()">Points (Descending)</mat-button-toggle>
+        <mat-button-toggle (click)="sortTableByGoalsScoredAscending()">Goals Scored (Ascending)</mat-button-toggle>
+        <mat-button-toggle (click)="sortTableByGoalsScoredDescending()">Goals Scored (Descending)</mat-button-toggle>
+        <mat-button-toggle (click)="sortTableByWinsAscending()">Wins (Ascending)</mat-button-toggle>
+        <mat-button-toggle  (click)="sortTableByWinsDescending()">Wins (Descending)</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped" *ngIf="clubsList">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">Club Name</th>
-        <th scope="col">Played</th>
-        <th scope="col">Wins</th>
-        <th scope="col">Draws</th>
-        <th scope="col">Losses</th>
-        <th scope="col">GS</th>
-        <th scope="col">GR</th>
-        <th scope="col">GD</th>
-        <th scope="col">Points</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div class="table-responsive">
+      <table class="table table-striped" *ngIf="clubsList">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Club Name</th>
+          <th scope="col">Played</th>
+          <th scope="col">Wins</th>
+          <th scope="col">Draws</th>
+          <th scope="col">Losses</th>
+          <th scope="col">GS</th>
+          <th scope="col">GR</th>
+          <th scope="col">GD</th>
+          <th scope="col">Points</th>
+        </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let club of getClubs();">
           <td>{{ club.clubName }}</td>
           <td>{{ club.noOfMatchesPlayed }}</td>
@@ -46,9 +47,12 @@
           <td>{{ club.goalDifference }}</td>
           <td>{{ club.clubPoints }}</td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+
 
 </div>
 

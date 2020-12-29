@@ -14,7 +14,7 @@
           </div>
 
           <div class="row justify-content-center">
-            <!-- Date Founded -->
+            <!-- Date Played -->
             <div class="form-group row justify-content-center">
               <div class="row">
 
@@ -22,6 +22,7 @@
                   <mat-form-field id="dayInput" appearance="outline">
                     <mat-label>DD</mat-label>
                     <input matInput formControlName="dayPlayed">
+                    <mat-error *ngIf="dayPlayed.invalid">Day is invalid!</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -29,6 +30,7 @@
                   <mat-form-field id="monthInput" appearance="outline">
                     <mat-label>MM</mat-label>
                     <input matInput formControlName="monthPlayed">
+                    <mat-error *ngIf="monthPlayed.invalid">Month is invalid!</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -36,6 +38,7 @@
                   <mat-form-field id="yearInput" appearance="outline">
                     <mat-label>YYYY</mat-label>
                     <input matInput formControlName="yearPlayed">
+                    <mat-error *ngIf="yearPlayed.invalid">Year is invalid!</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -54,11 +57,13 @@
               <mat-select formControlName="team1Name">
                 <mat-option *ngFor="let club of getClubs();" value="{{ club.clubName }}">{{ club.clubName }}</mat-option>
               </mat-select>
+              <mat-error *ngIf="team1Name.invalid">Select a team!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="input-field score-input" appearance="outline">
               <mat-label>Score</mat-label>
               <input matInput formControlName="team1Score">
+              <mat-error *ngIf="team1Score.invalid">Score is invalid!</mat-error>
             </mat-form-field>
           </div>
 
@@ -73,23 +78,27 @@
               <mat-select formControlName="team2Name">
                 <mat-option *ngFor="let club of getClubs();" value="{{ club.clubName }}">{{ club.clubName }}</mat-option>
               </mat-select>
+              <mat-error *ngIf="team2Name.invalid">Select a team!</mat-error>
             </mat-form-field>
 
             <mat-form-field class="input-field score-input" appearance="outline">
               <mat-label>Score</mat-label>
               <input matInput formControlName="team2Score">
+              <mat-error *ngIf="team2Score.invalid">Score is invalid!</mat-error>
             </mat-form-field>
           </div>
 
           <div class="form-group row justify-content-center">
-            <button class="btn btn btn-outline-warning secondary-button" id="btnAddRandomMatch" (click)="addRandomMatch()">Add Random Match</button>
-          </div>
-
-          <div class="form-group row justify-content-center">
-            <button class="btn btn-dark" id="btnAddMatch" (click)="addMatch()">Add Match</button>
+            <button class="btn btn-dark" id="btnAddMatch" [disabled]="addMatchForm.invalid" (click)="addMatch();">Add Match</button>
           </div>
 
         </form>
+        <div class="form-group row justify-content-center">
+          <button class="btn btn btn-outline-warning secondary-button" id="btnAddRandomMatch" (click)="addRandomMatch(); this.addMatchForm.reset();">
+            Add Random Match
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -110,6 +119,7 @@
                   <mat-form-field appearance="outline" id="dayInputFilter">
                     <mat-label>DD</mat-label>
                     <input matInput formControlName="dayPlayed">
+                    <mat-error *ngIf="dayPlayed.invalid">Invalid!</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -117,6 +127,7 @@
                   <mat-form-field appearance="outline" id="monthInputFilter">
                     <mat-label>MM</mat-label>
                     <input matInput formControlName="monthPlayed">
+                    <mat-error *ngIf="monthPlayed.invalid">Invalid!</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -124,6 +135,7 @@
                   <mat-form-field appearance="outline" id="yearInputFilter">
                     <mat-label>YYYY</mat-label>
                     <input matInput formControlName="yearPlayed">
+                    <mat-error *ngIf="yearPlayed.invalid">Invalid!</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -131,8 +143,8 @@
 
           </div>
           <div class="row justify-content-center">
-            <button class="btn btn-outline-warning secondary-button" id="btnResetTable" (click)="showAllMatches()">Show All Matches</button>
-            <button class="btn btn-dark" id="btnSearchTable" (click)="filterMatches()">Search Table</button>
+            <button type="button" class="btn btn-outline-warning secondary-button" id="btnResetTable" (click)="showAllMatches()">Show All Matches</button>
+            <button type="button" class="btn btn-dark" id="btnSearchTable" [disabled]="filterMatchForm.invalid" (click)="filterMatches()">Search Table</button>
           </div>
 
         </form>
@@ -148,7 +160,7 @@
           </mat-button-toggle-group>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive show" *ngIf="this.show">
           <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
@@ -159,7 +171,7 @@
               <th scope="col">Score</th>
             </tr>
             </thead>
-            <tbody  *ngIf="matchesList">
+            <tbody  *ngIf="this.matchesList">
             <tr *ngFor="let match of getMatches();">
               <td>{{ match.datePlayed.year + '/' + match.datePlayed.month + '/' + match.datePlayed.day}}</td>
               <td>{{ match.team1.clubName }}</td>

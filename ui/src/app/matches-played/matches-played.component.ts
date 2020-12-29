@@ -13,6 +13,7 @@ export class MatchesPlayedComponent implements OnInit {
   addMatchForm: FormGroup;
   filterMatchForm: FormGroup;
 
+  public show: boolean = true;
   matchesList: PlayedMatch[];
   clubsList: RegisteredFootballClub[];
 
@@ -29,19 +30,19 @@ export class MatchesPlayedComponent implements OnInit {
     })
 
     this.addMatchForm = this.formBuilder.group({
-      dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31)]],
-      monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12)]],
-      yearPlayed: ['', [Validators.required, Validators.minLength(4)]],
-      team1Name: [''],
-      team1Score: [''],
-      team2Name: [''],
-      team2Score: ['']
+      dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31), Validators.pattern("^[0-9]*$")]],
+      monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12), Validators.pattern("^[0-9]*$")]],
+      yearPlayed: ['', [Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]],
+      team1Name: [null, [Validators.required]],
+      team1Score: ['', [Validators.required, Validators.min(0), Validators.pattern("^[0-9]*$")]],
+      team2Name: [null, [Validators.required]],
+      team2Score: ['', [Validators.required, Validators.min(0), Validators.pattern("^[0-9]*$")]]
     });
 
     this.filterMatchForm = this.formBuilder.group({
-      dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31)]],
-      monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12)]],
-      yearPlayed: ['', [Validators.required, Validators.minLength(4)]]
+      dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31), Validators.pattern("^[0-9]*$")]],
+      monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12), Validators.pattern("^[0-9]*$")]],
+      yearPlayed: ['', [Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]]
     })
   }
 
@@ -57,7 +58,9 @@ export class MatchesPlayedComponent implements OnInit {
       this.addMatchForm.get('team2Score').value,
       this.addMatchForm.get('dayPlayed').value,
       this.addMatchForm.get('monthPlayed').value,
-      this.addMatchForm.get('yearPlayed').value).subscribe((data: any) => {})
+      this.addMatchForm.get('yearPlayed').value).subscribe((data: any) => { this.matchesList = data; })
+    this.addMatchForm.reset();
+    this.addMatchForm.clearValidators();
   }
 
   public filterMatches(): PlayedMatch[] {
@@ -73,6 +76,8 @@ export class MatchesPlayedComponent implements OnInit {
     this.appService.getMatches().subscribe((data: any) => {
       this.matchesList = data;
     })
+    this.filterMatchForm.reset();
+    this.filterMatchForm.clearValidators();
     return this.matchesList;
   }
 
@@ -89,7 +94,9 @@ export class MatchesPlayedComponent implements OnInit {
   }
 
   public addRandomMatch(): void {
-    this.appService.addRandomMatch().subscribe((data:any) => {})
+    this.appService.addRandomMatch().subscribe((data:any) => { this.matchesList = data; })
+    this.addMatchForm.reset();
+    this.addMatchForm.clearValidators();
   }
 
   public sortTableByDatesAscending() {
@@ -120,4 +127,5 @@ export class MatchesPlayedComponent implements OnInit {
       return result;
     })
   }
+
 }

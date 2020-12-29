@@ -26,7 +26,7 @@ public class MatchController extends Controller {
             e.printStackTrace();
         }
 
-        JsonNode jsonNode = Json.toJson(new AppSummary(String.valueOf(premiereLeagueManager.getClubs().size())));
+        JsonNode jsonNode = Json.toJson(premiereLeagueManager.getMatches());
         return ok(jsonNode).as("application/json");
     }
 
@@ -73,7 +73,7 @@ public class MatchController extends Controller {
             e.printStackTrace();
         }
 
-        JsonNode jsonNode = Json.toJson(new AppSummary(String.valueOf(premiereLeagueManager.getClubs().size())));
+        JsonNode jsonNode = Json.toJson(premiereLeagueManager.getMatches());
         return ok(jsonNode).as("application/json");
     }
 
