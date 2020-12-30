@@ -81,15 +81,17 @@
         <form [formGroup]="deleteClubForm" id="deleteClubForm">
           <!-- Club Name -->
           <div class="form-group row justify-content-center">
-            <mat-form-field class="input-field" appearance="outline" id="txtExistingClub">
-              <mat-label>Club Name</mat-label>
-              <input matInput formControlName="existingClubName">
-              <mat-error *ngIf="existingClubName.value == ''">Club name is required!</mat-error>
+            <mat-form-field appearance="outline" id="selectClub">
+              <mat-label>Select a club to delete </mat-label>
+              <mat-select formControlName="existingClubName" [disabled]="clubsList == undefined || clubsList.length == 0">
+                <mat-option *ngFor="let club of getClubs();" value="{{ club.clubName }}">{{ club.clubName }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="existingClubName.invalid">Select a team!</mat-error>
             </mat-form-field>
           </div>
 
           <div class="form-group row justify-content-center">
-            <button (click)="deleteClub()" [disabled]="deleteClubForm.invalid" class="btn btn-primary btn-dark" id="btnDeleteClub">Delete Club</button>
+            <button (click)="deleteClub()" [disabled]="deleteClubForm.invalid" class="btn btn-dark" id="btnDeleteClub">Delete Club</button>
           </div>
 
         </form>

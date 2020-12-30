@@ -81,6 +81,7 @@ export class MatchesPlayedComponent implements OnInit {
     return this.matchesList;
   }
 
+
   get dayPlayed() { return this.addMatchForm.get('dayPlayed'); }
   get monthPlayed() { return this.addMatchForm.get('monthPlayed'); }
   get yearPlayed() { return this.addMatchForm.get('yearPlayed'); }
@@ -89,16 +90,17 @@ export class MatchesPlayedComponent implements OnInit {
   get team2Name() { return this.addMatchForm.get('team2Name'); }
   get team2Score() { return this.addMatchForm.get('team2Score'); }
 
-  public getClubs(): RegisteredFootballClub[] {
-    return this.clubsList;
-  }
+  // Getter for list which contains the registered clubs
+  public getClubs(): RegisteredFootballClub[] { return this.clubsList; }
 
+  // Method which adds a random match between existing matches
   public addRandomMatch(): void {
     this.appService.addRandomMatch().subscribe((data:any) => { this.matchesList = data; })
-    this.addMatchForm.reset();
-    this.addMatchForm.clearValidators();
+    this.addMatchForm.reset();              // Resets the form
+    this.addMatchForm.clearValidators();    // Clears validators
   }
 
+  // Methods that sorts the list to sort the matches table by date
   public sortTableByDatesAscending() {
     this.matchesList.sort(function(m1, m2) {
       let result = m1.datePlayed.year - m2.datePlayed.year;

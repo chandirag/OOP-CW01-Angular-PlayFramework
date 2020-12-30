@@ -24,7 +24,7 @@ public class FootballClubController extends Controller {
             e.printStackTrace();
         }
 
-        JsonNode jsonNode = Json.toJson(new AppSummary(String.valueOf(premiereLeagueManager.getClubs().size())));
+        JsonNode jsonNode = Json.toJson(premiereLeagueManager.getClubs());
         return ok(jsonNode).as("application/json");
     }
 
@@ -40,7 +40,7 @@ public class FootballClubController extends Controller {
             e.printStackTrace();
         }
 
-        JsonNode jsonNode = Json.toJson(new AppSummary(String.valueOf(premiereLeagueManager.getClubs().size())));
+        JsonNode jsonNode = Json.toJson(premiereLeagueManager.getClubs());
         return ok(jsonNode).as("application/json");
     }
 

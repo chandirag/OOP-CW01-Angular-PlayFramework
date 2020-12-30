@@ -32,7 +32,7 @@ public class PremiereLeagueManager implements LeagueManager, Serializable {
             return "File not found";
         }
 
-        return "No club with the name " + clubName + " was found.\n";
+        return "A club with that name was not found.\n";
     }
 
     @Override
@@ -53,7 +53,7 @@ public class PremiereLeagueManager implements LeagueManager, Serializable {
                         "Goal Difference          :  " + club.getGoalDifference() + "\n";
             }
         }
-        return "No club with the name \"" + clubName + "\" was found.\n";
+        return "A club with that name was not found.\n";
     }
 
     @Override

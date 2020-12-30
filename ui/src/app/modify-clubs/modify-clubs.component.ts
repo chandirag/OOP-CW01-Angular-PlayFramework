@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {RegisteredFootballClub} from "../interfaces/registered-football-club";
 
 
 @Component({
@@ -11,10 +12,15 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class ModifyClubsComponent implements OnInit {
   addClubForm: FormGroup;
   deleteClubForm: FormGroup;
+  clubsList: RegisteredFootballClub[];
 
   constructor(private appService: AppService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.appService.getClubs().subscribe((data: any) => {
+      this.clubsList = data;
+    })
+
     this.addClubForm = this.formBuilder.group({
       clubName: ['', [Validators.required]],
       clubLocation: ['', [Validators.required]],
@@ -29,12 +35,6 @@ export class ModifyClubsComponent implements OnInit {
     })
   }
 
-  // public getNoOfClubs(): void {
-  //   this.appService.getNoOfClubs().subscribe((data: any) => {
-  //     this.noOfClubs = data.content;
-  //   })
-  // }
-
   public addNewClub(): void {
     this.appService.createNewClub(
         this.addClubForm.get('clubName').value,
@@ -42,7 +42,9 @@ export class ModifyClubsComponent implements OnInit {
         this.addClubForm.get('headCoach').value,
         this.addClubForm.get('dayFounded').value,
         this.addClubForm.get('monthFounded').value,
-        this.addClubForm.get('yearFounded').value).subscribe((data: any) => {})
+        this.addClubForm.get('yearFounded').value).subscribe((data: any) => { this.clubsList = data; })
+    this.addClubForm.reset();
+    this.addClubForm.clearValidators();
   }
 
   get clubName() { return this.addClubForm.get('clubName'); }
@@ -55,8 +57,17 @@ export class ModifyClubsComponent implements OnInit {
 
 
   public deleteClub(): void {
-    this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {})
+    this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {
+      this.clubsList = data;
+    })
+    this.deleteClubForm.reset();
+    this.deleteClubForm.clearValidators();
   }
 
   get existingClubName() { return this.deleteClubForm.get('existingClubName'); }
+
+  public getClubs(): RegisteredFootballClub[] {
+    return this.clubsList;
+  }
+
 }

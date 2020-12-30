@@ -65,10 +65,6 @@ export class AppService {
     return this.http.post(this.addRandomMatchUrl, {})
   }
 
-  // public getClubs(arrayIndex: number): Observable<any> {
-  //   return this.http.get(this.clubsUrl + '/' + arrayIndex, {})
-  // }
-
   public getClubs(): Observable<any> {
     return this.http.get(this.clubsUrl, {})
   }

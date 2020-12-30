@@ -64,3 +64,9 @@
   padding-top: 20px;
 }
 
+#selectClub {
+  min-width: 360px;
+  margin-top: 15px;
+  font-size: 15px;
+  margin-bottom: -15px;
+}
