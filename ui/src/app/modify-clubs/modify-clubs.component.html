@@ -78,7 +78,7 @@
           <div class="page-heading">Delete Existing Club</div>
         </div>
 
-        <form [formGroup]="deleteClubForm" id="deleteClubForm">
+        <form  #formDirective="ngForm" (ngSubmit)="showConfirmDeleteDialog(formDirective)" [formGroup]="deleteClubForm" id="deleteClubForm">
           <!-- Club Name -->
           <div class="form-group row justify-content-center">
             <mat-form-field appearance="outline" id="selectClub">
@@ -91,7 +91,7 @@
           </div>
 
           <div class="form-group row justify-content-center">
-            <button (click)="showConfirmDeleteDialog()" [disabled]="deleteClubForm.invalid" class="btn btn-dark" id="btnDeleteClub">Delete Club</button>
+            <button type="submit" [disabled]="deleteClubForm.invalid" class="btn btn-dark" id="btnDeleteClub">Delete Club</button>
           </div>
 
         </form>

@@ -13,7 +13,6 @@ export class MatchesPlayedComponent implements OnInit {
   addMatchForm: FormGroup;
   filterMatchForm: FormGroup;
 
-  public show: boolean = true;
   matchesList: PlayedMatch[];
   clubsList: RegisteredFootballClub[];
 
