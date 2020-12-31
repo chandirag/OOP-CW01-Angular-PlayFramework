@@ -25,7 +25,10 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import {InterceptorService} from "./services/httpInterceptor/interceptor.service";
+import { InterceptorService } from "./services/httpInterceptor/interceptor.service";
+import { DialogDeletedComponent } from './dialog-components/dialog-deleted/dialog-deleted.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { DialogAddedComponent } from './dialog-components/dialog-added/dialog-added.component';
 
 const routes: Routes = [
   {
@@ -54,7 +57,13 @@ const routes: Routes = [
     NavbarComponent,
     MatchesPlayedComponent,
     PremiereLeagueTableComponent,
-    ModifyClubsComponent
+    ModifyClubsComponent,
+    DialogDeletedComponent,
+    DialogAddedComponent
+  ],
+    entryComponents: [
+        DialogAddedComponent,
+        DialogDeletedComponent
   ],
     imports: [
         BrowserModule,
@@ -77,7 +86,8 @@ const routes: Routes = [
         MatCardModule,
         MatFormFieldModule,
         MatButtonToggleModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule
     ],
   providers: [
     AppService,

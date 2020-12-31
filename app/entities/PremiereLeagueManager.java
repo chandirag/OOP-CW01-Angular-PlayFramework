@@ -112,7 +112,11 @@ public class PremiereLeagueManager implements LeagueManager, Serializable {
         fileOutputStream.close();
     }
 
-    // ----------------------------- Getters --------------------------------------
+//    public void resetState() {
+//
+//    }
+
+    // ----------------------------- Getters ------------------------------------------------
     public ArrayList<FootballClub> getClubs() {
         return this.clubs;
     }

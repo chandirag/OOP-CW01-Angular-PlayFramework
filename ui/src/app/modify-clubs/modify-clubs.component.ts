@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import {RegisteredFootballClub} from "../interfaces/registered-football-club";
+import { RegisteredFootballClub} from "../interfaces/registered-football-club";
+import { MatDialog } from "@angular/material/dialog";
+import {DialogDeletedComponent} from "../dialog-components/dialog-deleted/dialog-deleted.component";
+import {DialogAddedComponent} from "../dialog-components/dialog-added/dialog-added.component";
 
 
 @Component({
@@ -14,7 +17,7 @@ export class ModifyClubsComponent implements OnInit {
   deleteClubForm: FormGroup;
   clubsList: RegisteredFootballClub[];
 
-  constructor(private appService: AppService, private formBuilder: FormBuilder) { }
+  constructor(private appService: AppService, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.appService.getClubs().subscribe((data: any) => {
@@ -25,9 +28,9 @@ export class ModifyClubsComponent implements OnInit {
       clubName: ['', [Validators.required]],
       clubLocation: ['', [Validators.required]],
       headCoach: ['', [Validators.required]],
-      dayFounded: ['', [Validators.required, Validators.min(1), Validators.max(31)]],
-      monthFounded: ['', [Validators.required, Validators.min(1), Validators.max(12)]],
-      yearFounded: ['', [Validators.required, Validators.minLength(4)]]
+      dayFounded: ['', [Validators.required, Validators.min(1), Validators.max(31), Validators.pattern("^[0-9]*$")]],
+      monthFounded: ['', [Validators.required, Validators.min(1), Validators.max(12), Validators.pattern("^[0-9]*$")]],
+      yearFounded: ['', [Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]]
     });
 
     this.deleteClubForm = this.formBuilder.group({
@@ -36,6 +39,7 @@ export class ModifyClubsComponent implements OnInit {
   }
 
   public addNewClub(): void {
+    this.showClubAddedDialog();
     this.appService.createNewClub(
         this.addClubForm.get('clubName').value,
         this.addClubForm.get('clubLocation').value,
@@ -45,6 +49,7 @@ export class ModifyClubsComponent implements OnInit {
         this.addClubForm.get('yearFounded').value).subscribe((data: any) => { this.clubsList = data; })
     this.addClubForm.reset();
     this.addClubForm.clearValidators();
+    // alert("Club added.")
   }
 
   get clubName() { return this.addClubForm.get('clubName'); }
@@ -54,14 +59,25 @@ export class ModifyClubsComponent implements OnInit {
   get monthFounded() { return this.addClubForm.get('monthFounded'); }
   get yearFounded() { return this.addClubForm.get('yearFounded'); }
 
+  public showConfirmDeleteDialog() {
+    let confirmDeleteDialogRef = this.dialog.open(DialogDeletedComponent, { width: '400px'});
+    confirmDeleteDialogRef.afterClosed().subscribe(data => {
+      if (data == 'deleteClub') {
+          this.deleteClub();
+      }
+    })
+  }
 
+  public showClubAddedDialog() {
+    this.dialog.open(DialogAddedComponent, {width: '400px'})
+  }
 
   public deleteClub(): void {
     this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {
       this.clubsList = data;
     })
-    this.deleteClubForm.reset();
-    this.deleteClubForm.clearValidators();
+    // this.deleteClubForm.reset();
+    // this.deleteClubForm.clearValidators();
   }
 
   get existingClubName() { return this.deleteClubForm.get('existingClubName'); }
