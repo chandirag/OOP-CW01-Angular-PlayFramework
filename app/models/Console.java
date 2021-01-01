@@ -1,13 +1,11 @@
-package entities;
+package models;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         PremiereLeagueManager premiereLeagueManager = new PremiereLeagueManager();
-
         premiereLeagueManager.restorePreviousState("data.ser");
 
         System.out.println("Welcome to the Football Premier League Manager!");
@@ -17,7 +15,8 @@ public class Console {
         }
     }
 
-    public static void displayMenu(PremiereLeagueManager premiereLeagueManager) throws IOException {
+    public static void displayMenu(PremiereLeagueManager premiereLeagueManager) {
+        String fileName = "data.ser";
         Scanner scanner;
         int menuOption;
 
@@ -28,16 +27,16 @@ public class Console {
         System.out.println("3: Display statistics for a selected Club");
         System.out.println("4: Display the Premiere League Table");
         System.out.println("5: Add match to Premiere League");
-        System.out.println("6: Open GUI");
-        System.out.println("7: Save & Exit");
+        System.out.println("6: Save & Exit");
         System.out.print("Select an option to continue: ");
 
+        // Validation for the main menu
         while (true) {
             scanner = new Scanner(System.in);
             try {
                 menuOption = scanner.nextInt();
                 scanner.nextLine();
-                if (menuOption > 0 && menuOption < 8) {
+                if (menuOption > 0 && menuOption < 7) {
                     break;
                 } else {
                     System.out.println("Invalid input. Please select an option from the menu");
@@ -49,13 +48,15 @@ public class Console {
             }
         }
 
+
         switch (menuOption) {
             case 1:
-                premiereLeagueManager.restorePreviousState("data.ser");
+            // Create new club and add to Premiere League
+                premiereLeagueManager.restorePreviousState(fileName);
                 // Club Name
                 System.out.print("Enter Club Name: ");
                 String clubName = scanner.nextLine();
-                if (clubExists(premiereLeagueManager, clubName)) {
+                if (clubExists(premiereLeagueManager, clubName)) { // Validate whether club already exists
                     System.out.println("A club with that name already exists!\n");
                     break;
                 }
@@ -74,11 +75,14 @@ public class Console {
 
                 premiereLeagueManager.addNewClub(clubName, clubLocation, dateFounded, headCoach);
                 System.out.println("\nClub added to the database!\n");
-                premiereLeagueManager.saveState("data.ser");
+                premiereLeagueManager.saveState(fileName);
                 break;
 
             case 2:
-                premiereLeagueManager.restorePreviousState("data.ser");
+            // Delete existing Club
+                premiereLeagueManager.restorePreviousState(fileName);
+
+                // Validate whether there are clubs left to delete
                 if (premiereLeagueManager.getClubs().isEmpty()) {
                     System.out.println("There are 0 clubs in the database.\n");
                     break;
@@ -87,23 +91,35 @@ public class Console {
                 System.out.print("Enter the name of the club that needs to be deleted: ");
                 String clubToBeDeleted = scanner.nextLine();
                 System.out.println(premiereLeagueManager.deleteClub(clubToBeDeleted));
-                premiereLeagueManager.saveState("data.ser");
+                premiereLeagueManager.saveState(fileName);
                 break;
 
             case 3:
-                premiereLeagueManager.restorePreviousState("data.ser");
+            // Display statistics for a selected Club
+                premiereLeagueManager.restorePreviousState(fileName);
+
+                // Validate whether there are clubs left to delete
+                if (premiereLeagueManager.getClubs().isEmpty()) {
+                    System.out.println("There are 0 clubs in the database.\n");
+                    break;
+                }
+
                 System.out.print("Enter the name of the club to view the stats: ");
                 String club = scanner.nextLine();
                 System.out.println(premiereLeagueManager.displayStatsForClub(club));
                 break;
 
             case 4:
-                premiereLeagueManager.restorePreviousState("data.ser");
+            // Display the Premiere League Table
+                premiereLeagueManager.restorePreviousState(fileName);
                 System.out.println(premiereLeagueManager.displayPremierLeagueTable());
                 break;
 
             case 5:
-                premiereLeagueManager.restorePreviousState("data.ser");
+            // Add match to Premiere League
+                premiereLeagueManager.restorePreviousState(fileName);
+
+                // Validate whether at least two clubs are already added
                 if (premiereLeagueManager.getClubs().isEmpty()) {
                     System.out.println("There aren't any clubs in the database. First add at least two clubs\n" +
                             "to add a match to the Premiere League.\n");
@@ -136,26 +152,24 @@ public class Console {
 
                 premiereLeagueManager.addMatchToPremierLeague(datePlayed, team1Name, team1Score, team2Name, team2Score);
                 System.out.println("\nMatch added to Premiere League!\n");
-                premiereLeagueManager.saveState("data.ser");
+                premiereLeagueManager.saveState(fileName);
                 break;
 
             case 6:
-                premiereLeagueManager.restorePreviousState("data.ser");
-                System.exit(0);
-                break;
-
-            case 7:
-                premiereLeagueManager.restorePreviousState("data.ser");
-                premiereLeagueManager.saveState("data.ser");
+            // Save & Exit
+                premiereLeagueManager.restorePreviousState(fileName);
+                premiereLeagueManager.saveState(fileName);
                 System.out.println("Exiting Program");
                 System.exit(0);
                 break;
         }
     }
 
+    // Method to get date input (reducing duplication)
     public static Date getDateInput() {
         Date date = new Date();
         Scanner scanner;
+        String inputMismatchErrorMessage = "Invalid input. Please enter an integer.";
 
         // Get year input
         while (true) {
@@ -166,7 +180,7 @@ public class Console {
                 date.setYear(year);
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter an integer.");
+                System.out.println(inputMismatchErrorMessage);
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid input. Please enter a valid year.");
             }
@@ -181,7 +195,7 @@ public class Console {
                 date.setMonth(month);
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter an integer.");
+                System.out.println(inputMismatchErrorMessage);
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid input. " + e.getMessage());
             }
@@ -196,7 +210,7 @@ public class Console {
                 date.setDay(day);
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter an integer.");
+                System.out.println(inputMismatchErrorMessage);
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid input. " + e.getMessage());
             }
@@ -205,6 +219,7 @@ public class Console {
         return date;
     }
 
+    // Check if a club with the same name already exists
     public static boolean clubExists(PremiereLeagueManager premiereLeagueManager, String clubName) {
         for (FootballClub club : premiereLeagueManager.getClubs()) {
             if (club.getClubName().equalsIgnoreCase(clubName)) {

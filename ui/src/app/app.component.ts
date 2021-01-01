@@ -12,17 +12,17 @@ export class AppComponent {
   postRequestResponse: string;
 
   constructor(private appService: AppService) {
-    this.appService.getWelcomeMessage().subscribe((data: any) => {
-      this.title = data.content;
-    });
+    // this.appService.getWelcomeMessage().subscribe((data: any) => {
+    //   this.title = data.content;
+    // });
   }
 
   /**
    * This method is used to test the post request
    */
-  public postData(): void {
-    this.appService.sendData().subscribe((data: any) => {
-      this.postRequestResponse = data.content;
-    });
-  }
+  // public postData(): void {
+  //   this.appService.sendData().subscribe((data: any) => {
+  //     this.postRequestResponse = data.content;
+  //   });
+  // }
 }

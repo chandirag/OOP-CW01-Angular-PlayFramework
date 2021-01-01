@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -90,8 +90,10 @@ public class FootballClub extends SportsClub implements Serializable, Comparable
 
     @Override
     public int compareTo(FootballClub footballClub) {
+        // First compare the club points of each club
         int result = this.clubPoints - footballClub.getClubPoints();
         if (result == 0) {
+            // If club points are equal compare the goal difference
             return this.getGoalDifference() - footballClub.getGoalDifference();
         } else {
             return result;

@@ -1,14 +1,9 @@
-export interface DateFounded {
-  year: number;
-  month: number;
-  day: number;
-  isLeapYear: boolean;
-}
+import { Date } from "./date";
 
 export interface RegisteredFootballClub {
   clubName: string;
   clubLocation: string;
-  dateFounded: DateFounded;
+  dateFounded: Date;
   headCoach: string;
   noOfMatchesPlayed: number;
   clubPoints: number;

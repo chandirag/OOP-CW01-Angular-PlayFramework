@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import java.io.Serializable;
 
@@ -35,6 +35,7 @@ public class Match implements Serializable, Comparable<Match> {
 
     @Override
     public int compareTo(Match m) {
+        // Compare dates played of the two matches
         return getDatePlayed().compareTo(m.getDatePlayed());
     }
 }

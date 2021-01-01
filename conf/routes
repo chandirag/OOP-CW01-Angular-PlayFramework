@@ -16,9 +16,9 @@ GET     /api/summary                controllers.HomeController.appSummary
 
 
 
-
-# Get Current Club Count
-GET    /api/getNumberOfClubs                                                            controllers.FootballClubController.getNumber
+#
+## Get Current Club Count
+#GET    /api/getNumberOfClubs                                                            controllers.FootballClubController.getNumber
 
 # Add new club from user input
 POST   /api/createClub/*clubName/*clubLocation/*headCoach/*day/*month/*year             controllers.FootballClubController.createClub(clubName, clubLocation, headCoach, day, month, year)

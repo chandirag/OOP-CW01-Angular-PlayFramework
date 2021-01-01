@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -71,9 +71,7 @@ public class Date implements Serializable, Comparable<Date>  {
     }
 
     @Override
-    public String toString() {
-        return this.year + "/" + this.month + "/" + this.day;
-    }
+    public String toString() { return this.year + "/" + this.month + "/" + this.day; }
 
     @Override
     public boolean equals(Object o) {
@@ -87,9 +85,7 @@ public class Date implements Serializable, Comparable<Date>  {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(year, month, day, isLeapYear);
-    }
+    public int hashCode() { return Objects.hash(year, month, day, isLeapYear); }
 
     @Override
     public int compareTo(Date date) {

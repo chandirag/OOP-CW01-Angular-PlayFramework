@@ -1,11 +1,52 @@
+table{
+  width: 100%;
+  border: 2px solid black;
+}
+
 .container {
   margin-top: 20px;
   padding-bottom: 40px;
 }
 
-table{
-  width: 100%;
-  border: 2px solid black;
+.score-input {
+  margin-left: 20px;
+  max-width: 130px;
+}
+
+.form-heading {
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.secondary-button {
+  border: 1px solid #292b2c;
+  color: #292b2c;
+}
+
+.secondary-button:hover {
+  border: 1px solid #f0ad4e;
+}
+
+.card {
+  min-width: 420px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button-group {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-top: -10px;
 }
 
 #dayInput {
@@ -29,18 +70,6 @@ table{
   margin-bottom: -5px;
 }
 
-.score-input {
-  margin-left: 20px;
-  max-width: 130px;
-}
-
-.form-heading {
-  font-family: "Poppins", "Helvetica Neue", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
 #btnAddRandomMatch {
   min-width: 350px;
 }
@@ -51,26 +80,6 @@ table{
 
 #pageHeading {
   margin-top: 30px;
-}
-
-.card {
-  min-width: 420px;
-  padding-top: 20px;
-  margin-bottom: 20px;
-}
-
-.heading {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.button-group {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  font-size: 15px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-top: -10px;
 }
 
 #dayInputFilter {
@@ -111,17 +120,7 @@ table{
   min-height: 375px;
   padding-left: 20px;
   padding-right: 20px;
-  /*padding-bottom: 30px;*/
   padding-top: 40px;
-}
-
-.secondary-button {
-  border: 1px solid #292b2c;
-  color: #292b2c;
-}
-
-.secondary-button:hover {
-  border: 1px solid #f0ad4e;
 }
 
 #addMatchCard {

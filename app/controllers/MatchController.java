@@ -1,9 +1,9 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import entities.Date;
-import entities.FootballClub;
-import entities.PremiereLeagueManager;
+import models.Date;
+import models.FootballClub;
+import models.PremiereLeagueManager;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -20,11 +20,7 @@ public class MatchController extends Controller {
         Date datePlayed = new Date(Integer.parseInt(yearP), Integer.parseInt(monthP), Integer.parseInt(dayP));
 
         premiereLeagueManager.addMatchToPremierLeague(datePlayed, team1Name, Integer.parseInt(score1), team2Name, Integer.parseInt(score2));
-        try {
-            premiereLeagueManager.saveState("data.ser");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        premiereLeagueManager.saveState("data.ser");
 
         JsonNode jsonNode = Json.toJson(premiereLeagueManager.getMatches());
         return ok(jsonNode).as("application/json");
@@ -66,12 +62,7 @@ public class MatchController extends Controller {
 
         // Pass all variables to addMatchToPremiereLeague()
         premiereLeagueManager.addMatchToPremierLeague(datePlayed, team1Name, team1Score, team2Name, team2Score);
-
-        try {
-            premiereLeagueManager.saveState("data.ser");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        premiereLeagueManager.saveState("data.ser");
 
         JsonNode jsonNode = Json.toJson(premiereLeagueManager.getMatches());
         return ok(jsonNode).as("application/json");
