@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AppService} from "../app.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PlayedMatch} from "../interfaces/played-match";
-import {RegisteredFootballClub} from "../interfaces/registered-football-club";
+import { Component, OnInit } from '@angular/core';
+import { AppService } from "../app.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { PlayedMatch } from "../interfaces/played-match";
+import { RegisteredFootballClub } from "../interfaces/registered-football-club";
 
 @Component({
   selector: 'app-matches-played',
@@ -20,14 +20,19 @@ export class MatchesPlayedComponent implements OnInit {
   constructor(private appService: AppService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    // Makes a http GET request to get the currently registered club details as a JSON response
+    // Assigns the JSON response (which is of type RegisteredFootballClub) to the array
     this.appService.getClubs().subscribe((data: any) => {
       this.clubsList = data;
     })
 
+    // Makes a http GET request to get the currently played matches as a JSON response
+    // Assigns the JSON response (which is of type PlayedMatch) to the array
     this.appService.getMatches().subscribe((data: any) => {
       this.matchesList = data;
     })
 
+    // Initializing Reactive form to add matches
     this.addMatchForm = this.formBuilder.group({
       dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31), Validators.pattern("^[0-9]*$")]],
       monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12), Validators.pattern("^[0-9]*$")]],
@@ -38,6 +43,7 @@ export class MatchesPlayedComponent implements OnInit {
       team2Score: ['', [Validators.required, Validators.min(0), Validators.pattern("^[0-9]*$")]]
     });
 
+    // Initializing Reactive form to get input to filter the matches table
     this.filterMatchForm = this.formBuilder.group({
       dayPlayed: ['', [Validators.required, Validators.min(1), Validators.max(31), Validators.pattern("^[0-9]*$")]],
       monthPlayed: ['', [Validators.required, Validators.min(1), Validators.max(12), Validators.pattern("^[0-9]*$")]],
@@ -45,11 +51,12 @@ export class MatchesPlayedComponent implements OnInit {
     })
   }
 
-  public getMatches(): PlayedMatch[] {
-    return this.matchesList;
-  }
+  // Getter for array containing played matches
+  public getMatches(): PlayedMatch[] { return this.matchesList; }
 
+  // Method to add a new match on button click
   public addMatch(): void {
+    // Make a http POST request to send data to the backend to add a match between two existing clubs
     this.appService.addMatch(
       this.addMatchForm.get('team1Name').value,
       this.addMatchForm.get('team1Score').value,
@@ -58,10 +65,11 @@ export class MatchesPlayedComponent implements OnInit {
       this.addMatchForm.get('dayPlayed').value,
       this.addMatchForm.get('monthPlayed').value,
       this.addMatchForm.get('yearPlayed').value).subscribe((data: any) => { this.matchesList = data; })
-    this.addMatchForm.reset();
-    this.addMatchForm.clearValidators();
+    this.addMatchForm.reset();            // Reset form
+    this.addMatchForm.clearValidators();  // clear form validators
   }
 
+  // Method to return arraylist of played matches that are filtered by user input from the form
   public filterMatches(): PlayedMatch[] {
     this.matchesList = this.matchesList.filter(match =>
       match.datePlayed.day == this.filterMatchForm.get('dayPlayed').value &&
@@ -71,7 +79,10 @@ export class MatchesPlayedComponent implements OnInit {
     return this.matchesList;
   }
 
+  // Method to return arraylist of all played matches (reset the table)
   public showAllMatches(): PlayedMatch[] {
+    // Makes a http GET request to get the currently played matches as a JSON response
+    // Assigns the JSON response (which is of type PlayedMatch) to the array
     this.appService.getMatches().subscribe((data: any) => {
       this.matchesList = data;
     })

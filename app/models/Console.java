@@ -8,7 +8,7 @@ public class Console {
         PremiereLeagueManager premiereLeagueManager = new PremiereLeagueManager();
         premiereLeagueManager.restorePreviousState("data.ser");
 
-        System.out.println("Welcome to the Football Premier League Manager!");
+        System.out.println("Welcome to the Football Premiere League Manager!");
         System.out.println("-----------------------------------------------");
         while (true) {
             displayMenu(premiereLeagueManager);
@@ -150,7 +150,13 @@ public class Console {
                 System.out.print("Enter score for Team 2: ");
                 int team2Score = scanner.nextInt(); scanner.nextLine();
 
-                premiereLeagueManager.addMatchToPremierLeague(datePlayed, team1Name, team1Score, team2Name, team2Score);
+
+                try {
+                    premiereLeagueManager.addMatchToPremierLeague(datePlayed, team1Name, team1Score, team2Name, team2Score);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid input. " + e.getMessage() + "\n");
+                    break;
+                }
                 System.out.println("\nMatch added to Premiere League!\n");
                 premiereLeagueManager.saveState(fileName);
                 break;

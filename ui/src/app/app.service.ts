@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 //  */
 @Injectable()
 export class AppService {
-  private serviceUrl = '/api/summary';
-  private dataPostTestUrl = '/api/postTest';
+  // private serviceUrl = '/api/summary';
+  // private dataPostTestUrl = '/api/postTest';
 
   private createClubUrl = '/api/createClub';
   private deleteClubUrl = '/api/deleteExistingClub';

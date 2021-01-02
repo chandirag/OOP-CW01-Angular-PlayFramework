@@ -6,6 +6,7 @@ import { BehaviorSubject } from "rxjs";
 })
 export class ProgressService {
 
+  // Set initial status of progress bar to false
   public isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }

@@ -40,30 +40,51 @@ public class FootballClub extends SportsClub implements Serializable, Comparable
     }
 
     public int getNoOfMatchesPlayed() { return noOfMatchesPlayed; }
-    public void setNoOfMatchesPlayed(int noOfMatchesPlayed) { this.noOfMatchesPlayed = noOfMatchesPlayed; }
+    public void setNoOfMatchesPlayed(int noOfMatchesPlayed) {
+        if (noOfMatchesPlayed >= 0) this.noOfMatchesPlayed = noOfMatchesPlayed;
+        else throw new IllegalArgumentException("No of matches played should be a positive integer.");
+    }
     public void incrementMatchesPlayed() { this.noOfMatchesPlayed++; }
 
     public int getClubPoints() { return clubPoints; }
-    public void setClubPoints(int clubPoints) { this.clubPoints = clubPoints; }
+    public void setClubPoints(int clubPoints) {
+        if (clubPoints >= 0) this.clubPoints = clubPoints;
+        else throw new IllegalArgumentException("Club points should be a positive integer");
+    }
 
     public int getNoOfWins() { return noOfWins; }
-    public void setNoOfWins(int noOfWins) { this.noOfWins = noOfWins; }
+    public void setNoOfWins(int noOfWins) {
+        if (noOfWins >= 0) this.noOfWins = noOfWins;
+        else throw new IllegalArgumentException("No. of wins should be a positive integer");
+    }
     public void incrementNoOfWins() { this.noOfWins++; }
 
     public int getNoOfLosses() { return noOfLosses; }
-    public void setNoOfLosses(int noOfLosses) { this.noOfLosses = noOfLosses; }
+    public void setNoOfLosses(int noOfLosses) {
+        if (noOfLosses >= 0) this.noOfLosses = noOfLosses;
+        else throw new IllegalArgumentException("No. of losses should be a positive integer");
+    }
     public void incrementNoOfLosses() { this.noOfLosses++; }
 
     public int getNoOfDraws() { return noOfDraws; }
-    public void setNoOfDraws(int noOfDraws) { this.noOfDraws = noOfDraws; }
+    public void setNoOfDraws(int noOfDraws) {
+        if (noOfDraws >= 0) this.noOfDraws = noOfDraws;
+        else throw new IllegalArgumentException("No. of draws should be a positive integer");
+    }
     public void incrementNoOfDraws() { this.noOfDraws++; }
 
     public int getGoalsReceived() { return goalsReceived; }
-    public void setGoalsReceived(int goalsReceived) { this.goalsReceived = goalsReceived; }
+    public void setGoalsReceived(int goalsReceived) {
+        if (goalsReceived >= 0) this.goalsReceived = goalsReceived;
+        else throw new IllegalArgumentException("No. of goals received should be a positive integer");
+    }
     public void incrementGoalsReceivedBy(int goalsReceivedInMatch) { this.goalsReceived += goalsReceivedInMatch; }
 
     public int getGoalsScored() { return goalsScored; }
-    public void setGoalsScored(int goalsScored) { this.goalsScored = goalsScored; }
+    public void setGoalsScored(int goalsScored) {
+        if (goalsScored >= 0) this.goalsScored = goalsScored;
+        else throw new IllegalArgumentException("No. of losses should be a positive integer");
+    }
     public void incrementGoalsScoredBy(int goalsScoredInMatch) { this.goalsScored += goalsScoredInMatch; }
 
     public int getGoalDifference() { return this.getGoalsScored() - this.getGoalsReceived(); }

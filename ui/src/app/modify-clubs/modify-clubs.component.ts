@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import {FormBuilder, FormGroup, FormGroupDirective, Validators} from "@angular/forms";
-import { RegisteredFootballClub} from "../interfaces/registered-football-club";
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from "@angular/forms";
+import { RegisteredFootballClub } from "../interfaces/registered-football-club";
 import { MatDialog } from "@angular/material/dialog";
-import {DialogDeletedComponent} from "../dialog-components/dialog-deleted/dialog-deleted.component";
-import {DialogAddedComponent} from "../dialog-components/dialog-added/dialog-added.component";
+import { DialogDeletedComponent } from "../dialog-components/dialog-deleted/dialog-deleted.component";
+import { DialogAddedComponent } from "../dialog-components/dialog-added/dialog-added.component";
 
 
 @Component({
@@ -16,17 +16,17 @@ export class ModifyClubsComponent implements OnInit {
   addClubForm: FormGroup;
   deleteClubForm: FormGroup;
   clubsList: RegisteredFootballClub[];
-  deleteClubFormInitialState: FormGroup;
-
-
 
   constructor(private appService: AppService, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit() {
+    // Makes a http GET request to get the currently registered club details as a JSON response
+    // Assigns the JSON response (which is of type RegisteredFootballClub) to the array
     this.appService.getClubs().subscribe((data: any) => {
       this.clubsList = data;
     })
 
+    // Initializing Reactive form to add club
     this.addClubForm = this.formBuilder.group({
       clubName: ['', [Validators.required]],
       clubLocation: ['', [Validators.required]],
@@ -36,12 +36,12 @@ export class ModifyClubsComponent implements OnInit {
       yearFounded: ['', [Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]]
     });
 
+    // Initializing Reactive form to delete club
     this.deleteClubForm = this.formBuilder.group({
       existingClubName: ['', [Validators.required]]
     })
-
-    this.deleteClubFormInitialState = this.deleteClubForm;
   }
+
 
   public addNewClub(): void {
     this.showClubAddedDialog();
@@ -64,20 +64,25 @@ export class ModifyClubsComponent implements OnInit {
   get monthFounded() { return this.addClubForm.get('monthFounded'); }
   get yearFounded() { return this.addClubForm.get('yearFounded'); }
 
+  // Show alert box asking user to confirm deletion of a club
   public showConfirmDeleteDialog(formDirective: FormGroupDirective) {
     let confirmDeleteDialogRef = this.dialog.open(DialogDeletedComponent, { width: '400px'});
     confirmDeleteDialogRef.afterClosed().subscribe(data => {
+      // If user confirms delete
       if (data == 'deleteClub') {
           this.deleteClub(formDirective);
       }
     })
   }
 
+  // Show alert to notify user that a club has been added
   public showClubAddedDialog() {
     this.dialog.open(DialogAddedComponent, {width: '400px'})
   }
 
+  // Method to delete existing club
   public deleteClub(formDirective: FormGroupDirective): void {
+    // Makes a http POST request to send data to the backend to delete an existing club
     this.appService.deleteExistingClub(this.deleteClubForm.get('existingClubName').value).subscribe((data: any) => {
       this.clubsList = data;
     })

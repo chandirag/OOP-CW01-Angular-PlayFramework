@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angu
 import { AppComponent } from './app.component';
 
 import { AppService } from './app.service';
-import { AppHttpInterceptorService } from './http-interceptor.service';
+// import { AppHttpInterceptorService } from './http-interceptor.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatchesPlayedComponent } from './matches-played/matches-played.component';
 import { PremiereLeagueTableComponent } from './premiere-league-table/premiere-league-table.component';
@@ -88,13 +88,11 @@ const routes: Routes = [
         MatDialogModule
     ],
   providers: [
-    AppService,
-    {
-      multi: true,
+    AppService, {
       provide: HTTP_INTERCEPTORS,
-      useClass: AppHttpInterceptorService
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
