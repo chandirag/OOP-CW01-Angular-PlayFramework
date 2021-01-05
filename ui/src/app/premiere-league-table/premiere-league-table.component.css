@@ -8,11 +8,6 @@ table{
   border: 2px solid black;
 }
 
-.sort-button {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  margin: 20px 5px;
-}
-
 .heading {
   font-family: 'Roboto', 'Helvetica', sans-serif;
   font-size: 20px;

@@ -6,7 +6,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angu
 import { AppComponent } from './app.component';
 
 import { AppService } from './app.service';
-// import { AppHttpInterceptorService } from './http-interceptor.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatchesPlayedComponent } from './matches-played/matches-played.component';
 import { PremiereLeagueTableComponent } from './premiere-league-table/premiere-league-table.component';

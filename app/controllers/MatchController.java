@@ -5,14 +5,14 @@ import models.Date;
 import models.FootballClub;
 import models.PremiereLeagueManager;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MatchController extends Controller {
+import static play.mvc.Results.ok;
+
+public class MatchController {
 
     public Result addMatch(String team1Name, String score1, String team2Name, String score2, String dayP, String monthP, String yearP) {
         PremiereLeagueManager premiereLeagueManager = new PremiereLeagueManager();

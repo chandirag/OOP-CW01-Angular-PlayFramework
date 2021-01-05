@@ -27,7 +27,8 @@ public class Console {
         System.out.println("3: Display statistics for a selected Club");
         System.out.println("4: Display the Premiere League Table");
         System.out.println("5: Add match to Premiere League");
-        System.out.println("6: Save & Exit");
+        System.out.println("6: Open GUI");
+        System.out.println("7: Save & Exit");
         System.out.print("Select an option to continue: ");
 
         // Validation for the main menu
@@ -36,7 +37,7 @@ public class Console {
             try {
                 menuOption = scanner.nextInt();
                 scanner.nextLine();
-                if (menuOption > 0 && menuOption < 7) {
+                if (menuOption > 0 && menuOption < 8) {
                     break;
                 } else {
                     System.out.println("Invalid input. Please select an option from the menu");
@@ -147,6 +148,14 @@ public class Console {
                 // Team 2 Details
                 System.out.print("Enter name of Team 2: ");
                 String team2Name = scanner.nextLine();
+
+                // Validate whether the two teams are different
+                while (team1Name.equalsIgnoreCase(team2Name)) {
+                    System.out.println("Team 1 and Team 2 should be different.");
+                    System.out.print("Enter name of Team 2: ");
+                    team2Name = scanner.nextLine();
+                }
+
                 System.out.print("Enter score for Team 2: ");
                 int team2Score = scanner.nextInt(); scanner.nextLine();
 
@@ -162,6 +171,10 @@ public class Console {
                 break;
 
             case 6:
+                System.out.println("Run command 'sbt run' in terminal at project root to start server and open GUI.");
+                break;
+
+            case 7:
             // Save & Exit
                 premiereLeagueManager.restorePreviousState(fileName);
                 premiereLeagueManager.saveState(fileName);

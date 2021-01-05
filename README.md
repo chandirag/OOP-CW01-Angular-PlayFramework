@@ -1,3 +1,18 @@
+# Premiere League Manager
+
+This repo contains files for the project that was completed under the Object Oriented Programming Module in the 2nd year at IIT. The project consists of both a console application and a GUI which simulates the manipulation of a premier league championship.
+
+Play Framework has been used to develop the web application backend/services and frontend using Angular CLI.
+
+## Used Versions / Frameworks & Technologies
+
+* [Play Framework: 2.8.0](https://www.playframework.com/documentation/2.8.x/Home)
+* [Angular CLI: 10.2.0](https://cli.angular.io/)
+* [Angular Reactive Forms](https://angular.io/guide/reactive-forms)
+* [Angular Material](https://material.angular.io/)
+
+### Integrated template from: https://github.com/yohangz/java-play-angular-seed
+
 [![MIT License][license-badge]][LICENSE]
 
 # Java Play Angular Seed
@@ -5,8 +20,6 @@
 > Use play framework to develop the web application backend/services and frontend using Angular CLI, all in a totally integrated workflow and single unified console. This approach will deliver perfect development experience without CORS hassle. 
 
 Read more @ http://bit.ly/2AStvhK
-
-[![Java Play Angular Seed](https://github.com/yohangz/java-play-angular-seed/blob/master/angular.png)](http://bit.ly/2AStvhK)
 
 ## Used Versions
 

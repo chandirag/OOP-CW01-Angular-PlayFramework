@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.Date;
 import models.PremiereLeagueManager;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Result;
 
-public class FootballClubController extends Controller {
+import static play.mvc.Results.ok;
+
+
+public class FootballClubController {
 
     public Result createClub(String clubName, String clubLocation, String headCoach, String day, String month, String year) {
         PremiereLeagueManager premiereLeagueManager = new PremiereLeagueManager();
