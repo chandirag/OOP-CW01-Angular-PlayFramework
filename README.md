@@ -17,13 +17,10 @@ Play Framework has been used to develop the web application backend/services and
 * [Angular Reactive Forms](https://angular.io/guide/reactive-forms)
 * [Angular Material](https://material.angular.io/)
 
-### Integrated template from: https://github.com/yohangz/java-play-angular-seed
 
-<br>
-<br>
+
 <hr>
-<br>
-<br>
+### Integrated template from: https://github.com/yohangz/java-play-angular-seed
 
 [![MIT License][license-badge]][LICENSE]
 
