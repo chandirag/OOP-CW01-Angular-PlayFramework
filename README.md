@@ -17,12 +17,9 @@ Play Framework has been used to develop the web application backend/services and
 * [Angular Reactive Forms](https://angular.io/guide/reactive-forms)
 * [Angular Material](https://material.angular.io/)
 
-
-
 <hr>
-### Integrated template from: https://github.com/yohangz/java-play-angular-seed
 
-[![MIT License][license-badge]][LICENSE]
+### Integrated template from: https://github.com/yohangz/java-play-angular-seed
 
 ## Contributors [Integrated template]
 
@@ -34,6 +31,8 @@ Play Framework has been used to develop the web application backend/services and
 ## License
 
 This software is licensed under the MIT license
+
+[![MIT License][license-badge]][LICENSE]
 
 [license-badge]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license]: https://github.com/yohangz/java-play-angular-seed/blob/master/LICENSE
