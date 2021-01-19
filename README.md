@@ -4,6 +4,12 @@ This repo contains files for the project that was completed under the Object Ori
 
 Play Framework has been used to develop the web application backend/services and frontend using Angular CLI.
 
+## Screenshots
+![League Table](screenshots/leagueTable.jpg)
+![View to Add & Filter Matches](screenshots/matches.jpg)
+![View to Add & Delete Clubs](screenshots/addDelete.jpg)
+
+
 ## Used Versions / Frameworks & Technologies
 
 * [Play Framework: 2.8.0](https://www.playframework.com/documentation/2.8.x/Home)
@@ -12,6 +18,12 @@ Play Framework has been used to develop the web application backend/services and
 * [Angular Material](https://material.angular.io/)
 
 ### Integrated template from: https://github.com/yohangz/java-play-angular-seed
+
+<br>
+<br>
+<hr>
+<br>
+<br>
 
 [![MIT License][license-badge]][LICENSE]
 
